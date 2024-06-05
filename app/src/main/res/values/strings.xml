@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">CalculadoraMC</string>
     <string name="click">Click</string>
+    <string name="Hello">Hello world</string>
+    <string name="Calculate">Calcular</string>
+    <string name="result">Resultado:</string>
+    <string name="enter_height">Añadir altura:</string>
+    <string name="enter_weight">Seleccionar peso:</string>
+    <string name="title">Calcule su Índice de Masa Corporal</string>
+
 </resources>

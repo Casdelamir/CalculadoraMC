@@ -7,25 +7,113 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/containerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
         <TextView
-            android:id="@+id/welcomeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/click"
-            android:id="@+id/button"/>
+            android:text="@string/title"
+            android:textSize="40sp"
+            android:textAlignment="center"
+            android:background="@color/purple"
+            android:textColor="@color/white"
+            android:padding="20dp"
+            />
 
+        <!-- Height -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="30dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_height"
+                android:textSize="30sp"/>
+            <EditText
+                android:id="@+id/valueHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="120"
+                android:layout_gravity="top"
+                android:textSize="25dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cm"
+                android:textSize="25sp"/>
+        </LinearLayout>
+
+        <!-- Kilos -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_weight"
+                android:textSize="30sp"
+                />
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?attr/materialIconButtonFilledStyle"
+                app:icon="@drawable/ic_add"/>
+
+            <TextView
+                android:id="@+id/valueWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100 Kg"
+                android:textSize="14pt"/>
+
+            <Button
+                android:id="@+id/restButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?attr/materialIconButtonFilledStyle"
+                app:icon="@drawable/ic_rest"/>
+
+        </LinearLayout>
+
+        <!-- Calculate -->
+        <Button
+            android:id="@+id/calculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Calculate"
+            android:layout_gravity="bottom"
+            android:textSize="17pt"
+            android:layout_margin="20dp"/>
+
+        <!-- Result -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/result"
+                android:textSize="16pt"/>
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textSize="16pt"/>
+        </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
