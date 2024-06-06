@@ -20,6 +20,7 @@
             android:background="@color/purple"
             android:textColor="@color/white"
             android:padding="20dp"
+            android:layout_weight="2"
             />
 
         <!-- Height -->
@@ -28,7 +29,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="30dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_weight="1">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,7 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_weight="1">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,14 +95,17 @@
             android:text="@string/Calculate"
             android:layout_gravity="bottom"
             android:textSize="17pt"
-            android:layout_margin="20dp"/>
+            android:layout_margin="20dp"
+            android:layout_weight="1"/>
 
         <!-- Result -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:layout_weight="2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,6 +117,18 @@
                 android:layout_height="wrap_content"
                 android:text="0.00"
                 android:textSize="16pt"/>
+
+            <TextView
+                android:id="@+id/result_classification"
+                android:layout_width="match_parent"
+                android:background="@color/purple"
+                android:padding="20dp"
+                android:text="@string/result_classification_low"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="60sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
         </LinearLayout>
 
     </LinearLayout>
