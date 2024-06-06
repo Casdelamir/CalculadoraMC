@@ -27,28 +27,45 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_margin="30dp"
             android:gravity="center"
             android:layout_weight="1">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/enter_height"
                 android:textSize="30sp"/>
-            <EditText
-                android:id="@+id/valueHeight"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:text="120"
-                android:layout_gravity="top"
-                android:textSize="25dp"/>
-            <TextView
+                android:gravity="center_vertical">
+                <EditText
+                    android:id="@+id/valueHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:text="120"
+                    android:layout_gravity="center"
+                    android:textSize="25dp">
+                </EditText>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cm"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cm"
-                android:textSize="25sp"/>
+                android:layout_gravity="bottom"
+                android:valueFrom="100"
+                android:valueTo="300"
+                />
         </LinearLayout>
 
         <!-- Kilos -->
@@ -69,7 +86,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?attr/materialIconButtonFilledStyle"
-                app:icon="@drawable/ic_add"/>
+                app:icon="@drawable/ic_add"
+                />
 
             <TextView
                 android:id="@+id/valueWeight"
@@ -130,7 +148,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
         </LinearLayout>
-
     </LinearLayout>
 
 
