@@ -5,15 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.slider.Slider
+import java.util.logging.Logger
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var hightText: EditText
+    lateinit var heightText: EditText
     lateinit var weightText: TextView
     lateinit var addButton: Button
     lateinit var restButton: Button
@@ -26,14 +29,17 @@ class MainActivity : AppCompatActivity() {
     lateinit var runnableSum: Runnable
     lateinit var runnableRest: Runnable
 
-    var hight = 150
+    lateinit var logger: Logger
+
+    var height = 150
     var weight = 60
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        hightText = findViewById(R.id.valueHeight)
+        heightText = findViewById(R.id.valueHeight)
         weightText = findViewById(R.id.valueWeight)
         addButton = findViewById(R.id.addButton)
         restButton = findViewById(R.id.restButton)
@@ -65,16 +71,34 @@ class MainActivity : AppCompatActivity() {
         clickButton(runnableRest, restButton)
 
         calculateButton.setOnClickListener {
-            hight = hightText.text.toString().toInt()
-            val calc = weight / (hight / 100f).pow(2)
-            result.text = calc.toString().format("%.${2}f")
+            height = heightText.text.toString().toInt()
+            val calc = weight / (height / 100f).pow(2)
+            result.text = "%.2f".format(calc)
             setResultClassification()
         }
 
         slider.addOnChangeListener { _, value, _ ->
-            hight = value.toInt()
+            height = value.toInt()
             setHeight()
         }
+//TODO change slide when the value is entered in the heightText
+//        heightText.addTextChangedListener(object: TextWatcher {
+//
+//                  override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//                //TODO("Not yet implemented")
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                //TODO("Not yet implemented")
+//            }
+//
+//            override fun afterTextChanged(s: Editable?) {
+//                var text = s.toString().toFloat()
+//                while (text in 100f .. 300f) {
+//                        slider.value = text
+//                }
+//            }
+//        })
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -94,28 +118,34 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
     fun setResultClassification() {
+        //can be used "when" and not "if"
         val resultNum = result.text.toString().toFloat()
         if (resultNum < 18.5) {
             resultClassification.setText(R.string.result_classification_low)
+            resultClassification.setBackgroundColor(getColor(R.color.yellow))
         } else if (resultNum in 18.5..24.9) {
             resultClassification.setText(R.string.result_classification_normal)
-        } else if (resultNum in 25.0..29.9) {
+            resultClassification.setBackgroundColor(getColor(R.color.green))
+        } else if (resultNum in 24.9..29.9) {
             resultClassification.setText(R.string.result_classification_height)
-        } else if (resultNum >= 30) {
+            resultClassification.setBackgroundColor(getColor(R.color.magenta))
+        } else if (resultNum > 29.9) {
             resultClassification.setText(R.string.result_classification_very_height)
+            resultClassification.setBackgroundColor(getColor(R.color.red))
         } else {
             resultClassification.text = ""
         }
     }
 
     fun setHeight() {
-        hightText.setText(hight.toString())
-        slider.value = hight.toFloat()
+        heightText.setText(height.toString())
+        slider.value = height.toFloat()
     }
 
-    @SuppressLint("SetTextI18n")
     fun setWeight() {
-        weightText.text = "$weight Kg"
+        weightText.text = getString(R.string.kg_format, weight)
     }
 }

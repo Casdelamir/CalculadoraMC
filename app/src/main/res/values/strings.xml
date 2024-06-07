@@ -11,4 +11,6 @@
     <string name="result_classification_normal">Peso normal</string>
     <string name="result_classification_height">Sobrepeso</string>
     <string name="result_classification_very_height">Obesidad</string>
+
+    <string name="kg_format">%1$d kg</string>
 </resources>
