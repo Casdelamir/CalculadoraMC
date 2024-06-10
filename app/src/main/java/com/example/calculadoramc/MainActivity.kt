@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.google.android.material.slider.Slider
 import java.util.logging.Logger
 import kotlin.math.pow
@@ -24,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var result: TextView
     lateinit var resultClassification: TextView
     lateinit var slider: Slider
+    lateinit var card: CardView
 
     val handler = Handler(Looper.getMainLooper())
     lateinit var runnableSum: Runnable
@@ -47,9 +47,12 @@ class MainActivity : AppCompatActivity() {
         result = findViewById(R.id.result)
         resultClassification = findViewById(R.id.result_classification)
         slider = findViewById(R.id.slider)
+        card = findViewById(R.id.card)
 
         setHeight()
         setWeight()
+
+        supportActionBar?.title = getString(R.string.title)
 
         runnableSum = object : Runnable {
             override fun run() {
@@ -118,23 +121,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     fun setResultClassification() {
         //can be used "when" and not "if"
         val resultNum = result.text.toString().toFloat()
         if (resultNum < 18.5) {
             resultClassification.setText(R.string.result_classification_low)
-            resultClassification.setBackgroundColor(getColor(R.color.yellow))
+            card.setCardBackgroundColor(getColor(R.color.yellow))
         } else if (resultNum in 18.5..24.9) {
             resultClassification.setText(R.string.result_classification_normal)
-            resultClassification.setBackgroundColor(getColor(R.color.green))
+            card.setCardBackgroundColor(getColor(R.color.green))
         } else if (resultNum in 24.9..29.9) {
             resultClassification.setText(R.string.result_classification_height)
-            resultClassification.setBackgroundColor(getColor(R.color.magenta))
+            card.setCardBackgroundColor(getColor(R.color.magenta))
         } else if (resultNum > 29.9) {
             resultClassification.setText(R.string.result_classification_very_height)
-            resultClassification.setBackgroundColor(getColor(R.color.red))
+            card.setCardBackgroundColor(getColor(R.color.red))
         } else {
             resultClassification.text = ""
         }
